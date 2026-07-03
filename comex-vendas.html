@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inglês para Comex — Feche negócios internacionais sem depender de tradutor | Meridian</title>
+  <meta name="description" content="Curso de Inglês para Comex: negocie, escreva e-mails e entenda contratos internacionais em inglês. Agende sua aula estratégica gratuita. Vagas limitadas.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="comex-vendas.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       BARRA DE URGÊNCIA (fixa no topo)
+       O prazo e o nº de vagas são configurados em comex-vendas.js (constantes
+       DEADLINE e VAGAS_RESTANTES) — atualize a cada turma nova.
+       ========================================================================== -->
+  <div class="urgency-bar" id="urgencyBar">
+    <div class="container urgency-bar__inner">
+      <span class="urgency-bar__text">
+        Turma de Inglês para Comex — inscrições encerram em
+        <strong id="countdownInline">--d --h --m --s</strong>
+        · <span id="vagasInline">--</span> vagas restantes
+      </span>
+      <a href="https://calendly.com/anairiscarneiro" target="_blank" rel="noopener" class="urgency-bar__cta">
+        Garantir minha vaga
+      </a>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       HEADER MÍNIMO — sem menu de navegação de propósito.
+       Página de conversão: quanto menos saída, melhor.
+       ========================================================================== -->
+  <header class="header">
+    <div class="container header__inner">
+      <a href="#" class="logo" aria-label="Meridian — página inicial">
+        <svg class="logo__mark" width="26" height="26" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.6"/>
+          <ellipse cx="14" cy="14" rx="4.5" ry="11" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="3" y1="14" x2="25" y2="14" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <span class="logo__text">meridian</span>
+      </a>
+      <a href="https://calendly.com/anairiscarneiro" target="_blank" rel="noopener" class="btn btn--primary btn--small">
+        Agendar Aula Estratégica
+      </a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO ========== -->
+    <section class="hero">
+      <svg class="hero__blob" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path fill="currentColor" d="M45.3,-58.5C58.5,-49.6,68.7,-34.6,72.4,-17.9C76.1,-1.2,73.3,17.2,64.4,31.8C55.5,46.4,40.5,57.2,23.6,63.5C6.7,69.8,-12.1,71.6,-28.7,65.9C-45.3,60.2,-59.7,47,-67.6,30.7C-75.5,14.4,-76.9,-5,-70.5,-21.1C-64.1,-37.2,-49.9,-50,-34.6,-58.5C-19.3,-67,-9.6,-71.2,3.9,-76.1C17.5,-81,32.1,-67.4,45.3,-58.5Z" transform="translate(100 100)"/>
+      </svg>
+
+      <div class="container hero__inner">
+        <p class="eyebrow">Curso · Inglês para Comex</p>
+
+        <h1 class="hero__title">
+          Feche negócios internacionais <em>sem depender de tradutor.</em>
+        </h1>
+
+        <p class="hero__subtitle">
+          O curso de Inglês para Comex da Meridian te prepara pra negociar, escrever
+          e-mails e entender contratos em inglês — direto no seu dia a dia de comércio exterior.
+        </p>
+
+        <div class="hero__actions">
+          <a href="https://calendly.com/anairiscarneiro" target="_blank" rel="noopener" class="btn btn--primary btn--large">
+            Agendar Aula Estratégica Gratuita
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <p class="hero__note">Sem compromisso · 20 minutos · Você sai com um plano, mesmo que não feche com a gente</p>
+        </div>
+
+        <!-- Contador espelhado, reforça a urgência dentro do Hero -->
+        <div class="countdown" id="countdownHero">
+          <div class="countdown__box"><span id="cdDays">--</span><small>dias</small></div>
+          <div class="countdown__box"><span id="cdHours">--</span><small>horas</small></div>
+          <div class="countdown__box"><span id="cdMinutes">--</span><small>min</small></div>
+          <div class="countdown__box"><span id="cdSeconds">--</span><small>seg</small></div>
+        </div>
+        <p class="countdown__label">até o fechamento das inscrições da turma atual</p>
+
+        <!-- Marcadores de confiança sem estatísticas inventadas -->
+        <ul class="trust-row">
+          <li>Turmas pequenas</li>
+          <li>Professores especializados em Comex</li>
+          <li>Aulas 100% ao vivo</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== AGITAÇÃO (dor) ========== -->
+    <section class="section">
+      <div class="container container--narrow">
+        <p class="eyebrow eyebrow--center">Isso é você?</p>
+        <h2 class="section__title section__title--center">Você entende de Comex. O inglês que trava.</h2>
+
+        <ul class="pain-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Trava na hora de negociar por telefone ou vídeo com fornecedor ou cliente internacional.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Depende de tradutor (ou do Google Tradutor) pra ler contrato, invoice ou ficha técnica.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Perde tempo — e às vezes o timing do negócio — esperando alguém "bilíngue" ficar disponível.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M7 7L13 13M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            Tem segurança técnica total em português, mas trava justamente na hora de mostrar isso em inglês.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== TRANSFORMAÇÃO ========== -->
+    <section class="section section--tint">
+      <div class="container container--narrow">
+        <p class="eyebrow eyebrow--center">A virada</p>
+        <h2 class="section__title section__title--center">Depois do curso, você vai:</h2>
+
+        <ul class="win-list">
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10L9 12.5L13.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Conduzir reuniões e negociações em inglês com confiança — sem script decorado.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10L9 12.5L13.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Escrever e responder e-mails comerciais sozinho, sem depender de terceiros.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10L9 12.5L13.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Entender e discutir Incoterms, invoices, packing list e contratos direto na fonte.
+          </li>
+          <li>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 10L9 12.5L13.5 7.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Fechar negócios no seu ritmo — sem esperar tradução, sem perder a janela de oportunidade.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ========== PRA QUEM É ========== -->
+    <section class="section">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Pra quem é</p>
+          <h2 class="section__title">Feito pra quem já vive o Comex no dia a dia</h2>
+        </div>
+
+        <div class="audience-grid">
+          <div class="audience-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="1.5" stroke="currentColor" stroke-width="1.5"/><path d="M8 7V5.5C8 4.4 8.9 3.5 10 3.5H14C15.1 3.5 16 4.4 16 5.5V7" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Analista / Assistente de Comex</h3>
+            <p>Lida com documentação, e-mails e fornecedores estrangeiros no dia a dia.</p>
+          </div>
+          <div class="audience-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M4 6C4 4.9 4.9 4 6 4H18C19.1 4 20 4.9 20 6V14C20 15.1 19.1 16 18 16H9L5 19.5V16H6C4.9 16 4 15.1 4 14V6Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <h3>Despachante Aduaneiro</h3>
+            <p>Precisa ler e validar documentos internacionais com precisão técnica.</p>
+          </div>
+          <div class="audience-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="4" ry="9" stroke="currentColor" stroke-width="1.5"/><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.5"/></svg>
+            <h3>Exportador / Importador</h3>
+            <p>Negocia direto com fornecedores e clientes em diferentes países.</p>
+          </div>
+          <div class="audience-card">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 13H11L9 22L20 9H13L13 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <h3>Empreendedor com operação internacional</h3>
+            <p>Quer crescer pra fora sem depender de outra pessoa pra "traduzir" o negócio.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CURRÍCULO ========== -->
+    <section class="section section--tint">
+      <div class="container container--narrow">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">O que você vai aprender</p>
+          <h2 class="section__title">Direto ao ponto, sem gramática solta</h2>
+          <p class="section__subtitle section__subtitle--center">Cada módulo já nasce aplicado à rotina real de quem trabalha com Comex.</p>
+        </div>
+
+        <ol class="curriculum">
+          <li class="curriculum__item">
+            <span class="curriculum__number">01</span>
+            <div>
+              <h3>Vocabulário essencial de Comex em inglês</h3>
+              <p>Os termos que você já usa em português, agora na ponta da língua em inglês.</p>
+            </div>
+          </li>
+          <li class="curriculum__item">
+            <span class="curriculum__number">02</span>
+            <div>
+              <h3>E-mails, documentos e contratos</h3>
+              <p>Invoice, packing list, bill of lading, Incoterms — lendo e escrevendo com segurança.</p>
+            </div>
+          </li>
+          <li class="curriculum__item">
+            <span class="curriculum__number">03</span>
+            <div>
+              <h3>Negociação e reuniões internacionais</h3>
+              <p>Como conduzir a conversa, argumentar e responder objeções em tempo real.</p>
+            </div>
+          </li>
+          <li class="curriculum__item">
+            <span class="curriculum__number">04</span>
+            <div>
+              <h3>Simulados de negociação real</h3>
+              <p>Prática com feedback direto do professor, em cenários parecidos com o seu dia a dia.</p>
+            </div>
+          </li>
+        </ol>
+
+        <!-- Bônus -->
+        <div class="bonus-box">
+          <p class="bonus-box__label">Bônus inclusos</p>
+          <ul class="bonus-box__list">
+            <li>Glossário bilíngue de Comex (PT ⇄ EN)</li>
+            <li>Templates prontos de e-mail comercial</li>
+            <li>Aula extra de pronúncia de termos técnicos</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== INSTRUTORA ========== -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="instructor">
+          <div class="instructor__avatar" aria-hidden="true">AC</div>
+          <div>
+            <p class="eyebrow">Quem vai te ensinar</p>
+            <h2 class="instructor__name">Anaís Carneiro</h2>
+            <!-- TODO: personalize com a bio real da instrutora (formação, experiência, tempo de mercado) -->
+            <p class="instructor__bio">
+              Fundadora da Meridian, especialista em ensino de Inglês aplicado ao comércio
+              exterior. Acredita que fluência não é sobre sotaque perfeito — é sobre fechar
+              negócio sem depender de ninguém no meio do caminho.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== DEPOIMENTOS ========== -->
+    <section class="section section--tint">
+      <div class="container">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Depoimentos</p>
+          <h2 class="section__title">Quem já fecha negócio em inglês</h2>
+        </div>
+
+        <div class="testimonials">
+          <figure class="testimonial">
+            <div class="testimonial__stars" aria-label="5 de 5 estrelas">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+            </div>
+            <blockquote>Fechei um contrato com um fornecedor no Vietnã numa chamada só em inglês. Ninguém ali era nativo — e funcionou perfeitamente.</blockquote>
+            <figcaption>
+              <span class="avatar">CM</span>
+              <div><strong>Carla Mendes</strong><span>Analista de Comércio Exterior</span></div>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <div class="testimonial__stars" aria-label="5 de 5 estrelas">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+            </div>
+            <blockquote>Eu tinha vergonha de falar em call com cliente gringo. Depois do curso, quem passou a marcar as calls comerciais em inglês fui eu.</blockquote>
+            <figcaption>
+              <span class="avatar">RT</span>
+              <div><strong>Rafael Torres</strong><span>Despachante Aduaneiro</span></div>
+            </figcaption>
+          </figure>
+
+          <figure class="testimonial">
+            <div class="testimonial__stars" aria-label="5 de 5 estrelas">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M7 0l2.1 4.6L14 5.3l-3.5 3.4.8 4.9L7 11.2 2.7 13.6l.8-4.9L0 5.3l4.9-.7L7 0z"/></svg>
+            </div>
+            <blockquote>Hoje leio contrato internacional sem depender de tradutor. O curso foi direto no que eu realmente uso no trabalho.</blockquote>
+            <figcaption>
+              <span class="avatar">JS</span>
+              <div><strong>Juliana Santos</strong><span>Exportadora</span></div>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GARANTIA / RISCO ZERO ========== -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="guarantee">
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 3L27 7.5V15C27 22 22.5 27 16 29C9.5 27 5 22 5 15V7.5L16 3Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <path d="M11 16L14.5 19.5L21.5 12.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <h3>Risco zero pra você conhecer</h3>
+            <p>A aula estratégica é gratuita e sem compromisso. Você sai de lá com um diagnóstico e um plano — e só entra pro curso se fizer sentido pro seu momento.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ ========== -->
+    <section class="section section--tint" id="faq">
+      <div class="container container--narrow">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">FAQ</p>
+          <h2 class="section__title">Perguntas frequentes</h2>
+        </div>
+
+        <div class="accordion" id="accordion">
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              <span>Preciso já saber inglês pra começar?</span>
+              <svg class="accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M8 3V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <div class="accordion__panel">
+              <p>Não. Na aula estratégica avaliamos seu nível atual e montamos um plano a partir de onde você está — do zero ao avançado.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              <span>Quanto tempo até eu conseguir usar isso numa negociação real?</span>
+              <svg class="accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M8 3V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <div class="accordion__panel">
+              <p>Depende do seu ponto de partida — isso é justamente parte do diagnóstico na aula estratégica. O curso é desenhado pra aplicação prática desde os primeiros módulos, não só teoria no fim.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              <span>As aulas são ao vivo ou gravadas?</span>
+              <svg class="accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M8 3V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <div class="accordion__panel">
+              <p>100% ao vivo, com professor especializado em Comex. Sem depender de conteúdo pré-gravado como método principal.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              <span>O que acontece depois que eu agendar a aula estratégica?</span>
+              <svg class="accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M8 3V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <div class="accordion__panel">
+              <p>Você escolhe um horário no Calendly, participa de uma conversa de ~20 minutos pra entender seu momento e objetivo, e sai com uma recomendação clara — com ou sem o curso.</p>
+            </div>
+          </div>
+
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="false">
+              <span>Por que tem prazo pra inscrição?</span>
+              <svg class="accordion__icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M8 3V13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </button>
+            <div class="accordion__panel">
+              <p>As turmas são pequenas de propósito, pra manter a qualidade do acompanhamento 1:1. Quando as vagas da turma atual fecham, a próxima abertura entra em fila de espera.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA FINAL ========== -->
+    <section class="cta-final" id="cta-final">
+      <div class="container">
+        <h2 class="cta-final__title">Sua próxima negociação em inglês <em>começa com uma conversa.</em></h2>
+        <p class="cta-final__subtitle">Agende sua aula estratégica gratuita antes que as vagas da turma atual acabem.</p>
+
+        <div class="countdown countdown--dark" id="countdownFinal">
+          <div class="countdown__box"><span id="cdDays2">--</span><small>dias</small></div>
+          <div class="countdown__box"><span id="cdHours2">--</span><small>horas</small></div>
+          <div class="countdown__box"><span id="cdMinutes2">--</span><small>min</small></div>
+          <div class="countdown__box"><span id="cdSeconds2">--</span><small>seg</small></div>
+        </div>
+
+        <a href="https://calendly.com/anairiscarneiro" target="_blank" rel="noopener" class="btn btn--primary btn--large">
+          Agendar Aula Estratégica Gratuita
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <p class="cta-final__note"><span id="vagasFinal">--</span> vagas restantes na turma atual</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== FOOTER MÍNIMO ========== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <a href="#" class="logo" aria-label="Meridian — página inicial">
+        <svg class="logo__mark" width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="14" cy="14" r="11" stroke="currentColor" stroke-width="1.6"/>
+          <ellipse cx="14" cy="14" rx="4.5" ry="11" stroke="currentColor" stroke-width="1.6"/>
+          <line x1="3" y1="14" x2="25" y2="14" stroke="currentColor" stroke-width="1.6"/>
+        </svg>
+        <span class="logo__text">meridian</span>
+      </a>
+      <p>© <span id="year"></span> Meridian Escola de Idiomas. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- ========== BARRA DE CTA FIXA (mobile) ========== -->
+  <div class="sticky-cta" id="stickyCta">
+    <a href="https://calendly.com/anairiscarneiro" target="_blank" rel="noopener" class="btn btn--primary btn--large sticky-cta__btn">
+      Agendar Aula Estratégica Grátis
+    </a>
+  </div>
+
+  <script src="comex-vendas.js"></script>
+</body>
+</html>

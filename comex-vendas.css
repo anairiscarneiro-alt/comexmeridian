@@ -1,0 +1,685 @@
+/* ==========================================================================
+   MERIDIAN — Inglês para Comex (Página de Vendas)
+   Mesma base de marca do site institucional (cores, fontes), com
+   componentes extras voltados 100% para conversão.
+   ========================================================================== */
+
+:root {
+  --color-bg: #FAFAFA;
+  --color-surface: #FFFFFF;
+  --color-ink: #10131A;
+  --color-ink-soft: #4A5160;
+  --color-muted: #868D99;
+  --color-line: #E7E9ED;
+
+  --color-accent: #2451FF;
+  --color-accent-dark: #1638C4;
+  --color-accent-soft: #EEF2FF;
+
+  --color-urgency: #E8433A;
+  --color-urgency-dark: #C43128;
+
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-serif: 'Fraunces', Georgia, serif;
+
+  --container-w: 1120px;
+  --container-w-narrow: 720px;
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 28px;
+
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ==========================================================================
+   Reset básico
+   ========================================================================== */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-ink);
+  background: var(--color-bg);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: none; cursor: pointer; }
+
+em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-accent);
+}
+
+:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
+.container {
+  width: 100%;
+  max-width: var(--container-w);
+  margin-inline: auto;
+  padding-inline: 24px;
+}
+
+.container--narrow { max-width: var(--container-w-narrow); }
+
+.section { padding-block: clamp(56px, 9vw, 100px); }
+.section--tint { background: var(--color-surface); border-block: 1px solid var(--color-line); }
+
+.section__head { max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+.section__head--center { max-width: 620px; margin-inline: auto; text-align: center; }
+
+.eyebrow {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+.eyebrow--center { text-align: center; }
+
+.section__title {
+  font-size: clamp(26px, 3.2vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  margin-bottom: 14px;
+}
+
+.section__title--center { text-align: center; margin-inline: auto; }
+
+.section__subtitle {
+  font-size: clamp(15.5px, 1.3vw, 17px);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+}
+
+.section__subtitle--center { margin-inline: auto; text-align: center; }
+
+/* ==========================================================================
+   Botões
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 100px;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), background 0.25s var(--ease);
+}
+
+.btn--primary { background: var(--color-ink); color: #fff; }
+
+.btn--primary:hover {
+  background: var(--color-accent);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(36, 81, 255, 0.25);
+}
+
+.btn--large { padding: 16px 28px; font-size: 16px; }
+.btn--small { padding: 10px 18px; font-size: 14px; }
+
+/* ==========================================================================
+   Barra de urgência (fixa no topo)
+   ========================================================================== */
+
+.urgency-bar {
+  position: sticky;
+  top: 0;
+  z-index: 110;
+  background: var(--color-urgency);
+  color: #fff;
+}
+
+.urgency-bar__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  padding-block: 10px;
+  text-align: center;
+}
+
+.urgency-bar__text {
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.urgency-bar__text strong {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+}
+
+.urgency-bar__cta {
+  font-size: 13px;
+  font-weight: 700;
+  background: #fff;
+  color: var(--color-urgency-dark);
+  padding: 6px 14px;
+  border-radius: 100px;
+  transition: transform 0.2s var(--ease);
+  white-space: nowrap;
+}
+
+.urgency-bar__cta:hover { transform: translateY(-1px); }
+
+/* ==========================================================================
+   Header mínimo
+   ========================================================================== */
+
+.header {
+  position: sticky;
+  top: 37px; /* logo abaixo da barra de urgência */
+  z-index: 100;
+  background: rgba(250, 250, 250, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+}
+
+.logo { display: inline-flex; align-items: center; gap: 9px; color: var(--color-ink); }
+.logo__mark { color: var(--color-accent); flex-shrink: 0; }
+.logo__text { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; }
+
+/* ==========================================================================
+   Hero
+   ========================================================================== */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(56px, 9vw, 96px) clamp(48px, 7vw, 80px);
+  text-align: center;
+}
+
+.hero__blob {
+  position: absolute;
+  top: -16%;
+  right: -14%;
+  width: clamp(320px, 40vw, 540px);
+  height: auto;
+  opacity: 0.14;
+  filter: blur(2px);
+  color: var(--color-accent);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero__inner { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; }
+
+.hero__title {
+  font-size: clamp(32px, 5.2vw, 54px);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
+  max-width: 20ch;
+  margin-bottom: 20px;
+}
+
+.hero__subtitle {
+  font-size: clamp(16px, 1.5vw, 18.5px);
+  color: var(--color-ink-soft);
+  max-width: 52ch;
+  margin-bottom: 32px;
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.hero__note { font-size: 13.5px; color: var(--color-muted); max-width: 40ch; }
+
+/* ==========================================================================
+   Contador regressivo
+   ========================================================================== */
+
+.countdown {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.countdown__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 64px;
+  padding: 10px 8px;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+}
+
+.countdown__box span {
+  font-size: 22px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-ink);
+  line-height: 1.1;
+}
+
+.countdown__box small {
+  font-size: 10.5px;
+  color: var(--color-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 2px;
+}
+
+.countdown__label {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-bottom: 28px;
+}
+
+.countdown--dark {
+  margin-inline: auto;
+  margin-bottom: 28px;
+  justify-content: center;
+}
+
+.countdown--dark .countdown__box {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+.countdown--dark .countdown__box span { color: #fff; }
+.countdown--dark .countdown__box small { color: rgba(255, 255, 255, 0.5); }
+
+/* Marcadores de confiança */
+.trust-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px 22px;
+  list-style: none;
+  font-size: 13.5px;
+  color: var(--color-ink-soft);
+}
+
+.trust-row li { display: flex; align-items: center; gap: 6px; }
+
+.trust-row li::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+/* ==========================================================================
+   Listas de dor / transformação
+   ========================================================================== */
+
+.pain-list,
+.win-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  margin-top: 36px;
+}
+
+.pain-list li,
+.win-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.55;
+  color: var(--color-ink);
+}
+
+.pain-list svg { flex-shrink: 0; margin-top: 2px; color: var(--color-urgency); }
+.win-list svg { flex-shrink: 0; margin-top: 2px; color: var(--color-accent); }
+
+/* ==========================================================================
+   Pra quem é
+   ========================================================================== */
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.audience-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 26px 22px;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+
+.audience-card:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(16, 19, 26, 0.07); }
+.audience-card svg { color: var(--color-accent); margin-bottom: 16px; }
+.audience-card h3 { font-size: 15.5px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+.audience-card p { font-size: 13.5px; color: var(--color-ink-soft); line-height: 1.55; }
+
+/* ==========================================================================
+   Currículo
+   ========================================================================== */
+
+.curriculum {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 40px;
+}
+
+.curriculum__item {
+  display: flex;
+  gap: 20px;
+  padding-block: 22px;
+  border-bottom: 1px solid var(--color-line);
+}
+
+.curriculum__item:first-child { padding-top: 0; }
+
+.curriculum__number {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  width: 40px;
+}
+
+.curriculum__item h3 { font-size: 16.5px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.01em; }
+.curriculum__item p { font-size: 14px; color: var(--color-ink-soft); line-height: 1.55; }
+
+.bonus-box {
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+  padding: 28px 26px;
+}
+
+.bonus-box__label {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-accent-dark);
+  margin-bottom: 14px;
+}
+
+.bonus-box__list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+.bonus-box__list li {
+  font-size: 14.5px;
+  font-weight: 500;
+  color: var(--color-ink);
+  padding-left: 22px;
+  position: relative;
+}
+
+.bonus-box__list li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--color-accent);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Instrutora
+   ========================================================================== */
+
+.instructor {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.instructor__avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.instructor__name {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.instructor__bio { font-size: 15px; color: var(--color-ink-soft); line-height: 1.65; max-width: 56ch; }
+
+/* ==========================================================================
+   Depoimentos
+   ========================================================================== */
+
+.testimonials { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+.testimonial {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: 30px 26px;
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial__stars { display: flex; gap: 3px; color: #F5A623; margin-bottom: 16px; }
+.testimonial blockquote { font-size: 15px; line-height: 1.65; color: var(--color-ink); margin-bottom: 22px; flex-grow: 1; }
+.testimonial figcaption { display: flex; align-items: center; gap: 12px; }
+.testimonial figcaption strong { display: block; font-size: 14px; font-weight: 600; }
+.testimonial figcaption span { font-size: 12.5px; color: var(--color-muted); }
+
+.avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-accent-soft);
+  color: var(--color-accent-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12.5px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Garantia
+   ========================================================================== */
+
+.guarantee {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  background: var(--color-accent-soft);
+  border-radius: var(--radius-md);
+  padding: 28px 26px;
+}
+
+.guarantee svg { color: var(--color-accent); flex-shrink: 0; }
+.guarantee h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; letter-spacing: -0.01em; }
+.guarantee p { font-size: 14.5px; color: var(--color-ink-soft); line-height: 1.6; }
+
+/* ==========================================================================
+   FAQ — Accordion
+   ========================================================================== */
+
+.accordion__item { border-bottom: 1px solid var(--color-line); }
+
+.accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 4px;
+  font-size: 15.5px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.accordion__icon { flex-shrink: 0; transition: transform 0.3s var(--ease); color: var(--color-accent); }
+.accordion__item.is-open .accordion__icon { transform: rotate(45deg); }
+
+.accordion__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  overflow: hidden;
+  transition: grid-template-rows 0.35s var(--ease);
+}
+
+.accordion__item.is-open .accordion__panel { grid-template-rows: 1fr; }
+
+.accordion__panel > p {
+  overflow: hidden;
+  min-height: 0;
+  font-size: 14px;
+  color: var(--color-ink-soft);
+  line-height: 1.7;
+  padding-right: 40px;
+}
+
+.accordion__item.is-open .accordion__panel > p { padding-bottom: 20px; }
+
+/* ==========================================================================
+   CTA final
+   ========================================================================== */
+
+.cta-final {
+  padding-block: clamp(64px, 10vw, 110px);
+  text-align: center;
+  background: var(--color-ink);
+  color: #fff;
+}
+
+.cta-final__title {
+  font-size: clamp(26px, 3.6vw, 40px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.18;
+  margin-bottom: 14px;
+}
+
+.cta-final__title em { color: #7C9CFF; }
+
+.cta-final__subtitle {
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 46ch;
+  margin-inline: auto;
+  margin-bottom: 32px;
+}
+
+.cta-final .btn--primary { background: #fff; color: var(--color-ink); }
+.cta-final .btn--primary:hover { background: var(--color-accent); color: #fff; }
+
+.cta-final__note {
+  margin-top: 16px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.cta-final__note span { font-weight: 700; color: #fff; }
+
+/* ==========================================================================
+   Footer mínimo
+   ========================================================================== */
+
+.footer { padding-block: 32px; border-top: 1px solid var(--color-line); padding-bottom: 100px; }
+
+.footer__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer__inner p { font-size: 13px; color: var(--color-muted); }
+
+/* ==========================================================================
+   Barra de CTA fixa (mobile)
+   ========================================================================== */
+
+.sticky-cta {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 120;
+  padding: 12px 20px;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid var(--color-line);
+  transform: translateY(100%);
+  transition: transform 0.3s var(--ease);
+  display: none;
+}
+
+.sticky-cta.is-visible { transform: translateY(0); }
+
+.sticky-cta__btn { width: 100%; justify-content: center; }
+
+/* ==========================================================================
+   Responsivo
+   ========================================================================== */
+
+@media (max-width: 960px) {
+  .audience-grid { grid-template-columns: repeat(2, 1fr); }
+  .testimonials { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 720px) {
+  .header { top: 0; } /* na tela pequena a barra de urgência quebra em 2 linhas e some do fluxo sticky duplo */
+  .sticky-cta { display: block; }
+  .instructor { flex-direction: column; align-items: center; text-align: center; }
+  .instructor__bio { max-width: 100%; }
+  .guarantee { flex-direction: column; align-items: center; text-align: center; }
+}
+
+@media (max-width: 640px) {
+  .audience-grid { grid-template-columns: 1fr; }
+  .countdown__box { min-width: 56px; padding: 8px 6px; }
+  .countdown__box span { font-size: 18px; }
+  .urgency-bar__text { font-size: 12px; }
+}
